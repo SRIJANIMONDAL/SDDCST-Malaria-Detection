@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+
+# Datasets and annotations
+dataset/
+dataset_split/
+dataset_DDA_V1/
+dataset_DDA_V1_combinations/
+dataset_DDA_V2/
+dataset_DDA_V2_combinations/
+
+# Model weights and training outputs
+*.pt
+*.pth
+*.ckpt
+*.onnx
+runs/
+result/
+
+# Temporary files
+*.log
+*.swp
+.ipynb_checkpoints/

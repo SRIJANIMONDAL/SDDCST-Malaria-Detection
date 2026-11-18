@@ -156,9 +156,3 @@ The scripts reflect the research implementation. Some paths are currently specif
 
 
 
-\## Citation
-
-
-
-Citation information will be added following publication.
-

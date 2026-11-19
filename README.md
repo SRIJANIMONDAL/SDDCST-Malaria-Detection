@@ -1,158 +1,68 @@
-\# SDDCST: Stochastic Dual-Domain Color Statistics Transfer for Malaria Parasite Detection
+# Malaria Parasite Detection Using YOLO
 
+## Overview
 
+This repository provides a general-purpose framework for malaria parasite detection in microscopic blood-smear images using YOLO-based object detection models.
 
-\## Overview
+The project focuses on dataset preparation, model training, and performance evaluation for detecting and classifying malaria parasite stages.
 
+## Objectives
 
+- Prepare annotated microscopy datasets for object detection.
+- Train YOLO-based models on malaria microscopy images.
+- Evaluate detection performance using standard object detection metrics.
+- Support experimentation with different YOLO architectures.
 
-This repository contains the implementation of \*\*Stochastic Dual-Domain Color Statistics Transfer (SDDCST)\*\*, a lightweight, annotation-preserving data augmentation strategy investigated for cross-dataset malaria parasite detection.
+## Parasite Classes
 
+The framework considers four malaria parasite stages:
 
+1. Ring
+2. Trophozoite
+3. Gametocyte
+4. Schizont
 
-SDDCST combines Lab color statistics from two reference domains through stochastic interpolation and controlled blending to generate diverse microscopy image appearances while preserving the original parasite bounding-box annotations.
+## Dataset Preparation
 
+The project supports datasets organized in YOLO annotation format.
 
+Each image has a corresponding annotation file containing class labels and normalized bounding-box coordinates.
 
-\## Datasets
+Dataset preparation includes organizing images and annotations into training, validation, and testing subsets.
 
+## Model Training
 
+The framework supports YOLO-based object detection models using the Ultralytics library.
 
-Three malaria microscopy datasets are used:
+Training configurations can be adjusted according to the available dataset, hardware, and experimental requirements.
 
+## Model Evaluation
 
+Detection performance can be assessed using standard metrics:
 
-| Dataset | Description | Images |
+- Precision
+- Recall
+- mAP@50
+- mAP@50–95
 
-|---|---|---:|
+## Installation
 
-| New\_NIMR (A) | NIMR dataset with multi-instance annotations | 150 |
-
-| Old\_NIMR (B) | NIMR dataset with predominantly single-object annotations | 155 |
-
-| MP\_IDB (C) | Public malaria microscopy dataset | 40 |
-
-
-
-Four parasite classes are considered: \*\*Ring, Trophozoite, Gametocyte, and Schizont\*\*.
-
-
-
-The NIMR datasets are not redistributed in this repository.
-
-
-
-\## Proposed SDDCST Augmentation
-
-
-
-1\. Select a source training image and two reference images from the other domains.
-
-2\. Convert the images into CIELAB color space.
-
-3\. Compute channel-wise means and standard deviations.
-
-4\. Interpolate reference statistics using a randomly sampled mixing coefficient.
-
-5\. Transfer the interpolated statistics to the source image.
-
-6\. Blend the transformed image with the original source image.
-
-7\. Preserve the original YOLO bounding-box annotations.
-
-
-
-The stochastic parameters are:
-
-
-
-\- Lambda: uniformly sampled from 0.2 to 0.8.
-
-\- Alpha: uniformly sampled from 0.4 to 0.8.
-
-
-
-Two augmented images are generated for each original training image.
-
-
-
-\## Experimental Setup
-
-
-
-The augmented-only training experiment uses:
-
-
-
-\- New\_NIMR augmented images: 200
-
-\- Old\_NIMR augmented images: 214
-
-\- MP\_IDB augmented images: 52
-
-
-
-\*\*Total: 466 augmented training images.\*\*
-
-
-
-Original training images are excluded from this experiment. Validation and test images remain unaugmented.
-
-
-
-The evaluated detectors are YOLO11n, YOLO12n, and YOLO26n.
-
-
-
-\## Repository Files
-
-
-
-| File | Description |
-
-|---|---|
-
-| `split.py` | Dataset splitting |
-
-| `dda\_v1\_color\_transfer.py` | SDDCST augmentation implementation |
-
-| `prepare\_dda\_v1\_prime\_combinations.py` | Dataset combination preparation |
-
-| `prepare\_train\_v1\_prime.py` | Augmented-only training preparation |
-
-| `train\_v1\_prime.py` | YOLO training |
-
-| `evaluate\_v1\_prime.py` | Evaluation |
-
-| `train\_dda\_v1\_prime\_combinations.py` | Additional combination experiments |
-
-
-
-\## Installation
-
-
+Install the required Python dependencies:
 
 ```bash
-
 pip install -r requirements.txt
-
 ```
 
+## Data Availability
 
+Microscopy datasets and annotations are not redistributed in this repository. Users must obtain the necessary data from authorized sources.
 
-\## Data Availability
+## Project Status
 
+This repository is intended for general-purpose malaria parasite detection experiments and educational use.
 
+Additional research implementations and experimental components are maintained separately and are not included in this public repository.
 
-Dataset files are not included. Researchers must obtain the datasets from their authorized sources and organize them according to the paths expected by the scripts.
+## Acknowledgements
 
-
-
-\## Reproducibility
-
-
-
-The scripts reflect the research implementation. Some paths are currently specific to the original experimental environment and must be configured for another machine.
-
-
-
+The authors acknowledge the institutional and research support provided by IIT Goa and ICMR–National Institute of Malaria Research (NIMR), Goa.

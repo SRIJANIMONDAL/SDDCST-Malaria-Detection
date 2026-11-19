@@ -1,4 +1,4 @@
-# Malaria Parasite Detection Using YOLO
+# Malaria Parasite Detection 
 
 ## Overview
 

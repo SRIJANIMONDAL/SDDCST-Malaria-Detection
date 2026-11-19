@@ -1,7 +1,3 @@
-
-#!/usr/bin/env python3
-"""General-purpose YOLO object detection training."""
-
 import argparse
 from pathlib import Path
 
